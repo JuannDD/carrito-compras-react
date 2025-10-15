@@ -31,6 +31,7 @@ export const CarritoProvider = ({ children }) => {
   const [listaCompras, dispatch] = useReducer(comprasReducer, initialState);
 
   const agregarCompra = (compra) => {
+    if(listaCompras.find((item) => item.id === compra.id)) return;
     compra.cantidad = 1;
     const action = {
       type: "[CARRITO] Agregar compra",
